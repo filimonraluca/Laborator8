@@ -21,8 +21,8 @@ public class AlbumController {
         }
     }
     /**
-     * In aceasta metoda am formatat stringul command cu rol de query. In acest query dorim sa inseram in tabela
-     * astists un artist nou. Pentru a executa queryul este necesara metoda executeUpdate deoarece in query
+     * In aceasta metoda am formatat stringul command cu rol de query. Prin acest query dorim sa inseram in tabela
+     * albums un album nou. Pentru a executa queryul este necesara metoda executeUpdate deoarece in query
      * incercam sa facem o inserare.
      * @param name
      * @param artistId

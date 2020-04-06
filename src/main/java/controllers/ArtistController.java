@@ -14,6 +14,7 @@ public class ArtistController {
     Statement statement;
 
     /**
+     * In constructor am preluat obiectul de tip Connectiom din database.
      * Dupa ce am preluat connetion din obiectul de tip Database il putem folosi pentru a initializa
      * atributul de tip Statment al clasei necesar pentru a executa query-uri in baza de date
      * @param database un obiect de tip Database de la care vom prelua obiectul connection
@@ -28,9 +29,9 @@ public class ArtistController {
     }
 
     /**
-     * In aceasta metoda am formatat stringul command cu rol de query. In acest query dorim sa inseram in tabela
+     * In aceasta metoda am formatat stringul command cu rol de query. Prin acest query dorim sa inseram in tabela
      * astists un artist nou. Pentru a executa queryul este necesara metoda executeUpdate deoarece in query
-     * incercam sa facem o inserare.
+     * incercam sa realizam o inserare.
      * @param name
      * @param country
      */
@@ -45,7 +46,7 @@ public class ArtistController {
     }
 
     /**
-     * In aceasta metoda am formatat stringul command cu rol de query. In acest query dorim sa selectam din tabela
+     * In aceasta metoda am formatat stringul command cu rol de query. Prin acest query dorim sa selectam din tabela
      * randurile unde numele corespunde cu cel dat ca paramentru.
      * Pentru a executa queryul este necesara metoda executeQuery deoarece in query incercam sa facem un select.
      * ExecuteQuery returneaza un obiect de tipul ResultSet pentru care vom apela metoda next().
