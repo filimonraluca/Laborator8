@@ -9,7 +9,9 @@ public class Database {
     Connection connection = null;
 
     /**
-     * In constructorul clasei Database am creat conexiunea catre baza de date folosind DriverManager si metoda getConnection.
+     * In constructorul clasei Database am creat conexiunea catre baza de date folosind DriverManager si metoda getConnection
+     * ,metoda care incearca sa stabileasca o conexiune la baza de date cu url-ul specificat in numele utilizatorului dba
+     * cu parola sql.
      */
     public Database() {
         try {
