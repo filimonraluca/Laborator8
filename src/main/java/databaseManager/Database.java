@@ -6,8 +6,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Database {
-    static Connection connection = null;
+    Connection connection = null;
 
+    /**
+     * In constructorul clasei Database am creat conexiunea catre baza de date folosind DriverManager si metoda getConnection.
+     */
     public Database() {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MusicAlbum", "dba" , "sql");
@@ -17,8 +20,9 @@ public class Database {
         }
     }
 
-    public static Connection getConnection()
+    public Connection getConnection()
     {
         return connection;
     }
+
 }

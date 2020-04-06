@@ -13,6 +13,11 @@ public class ArtistController {
     Connection connection;
     Statement statement;
 
+    /**
+     * Dupa ce am preluat connetion din obiectul de tip Database il putem folosi pentru a initializa
+     * atributul de tip Statment al clasei necesar pentru a executa query-uri in baza de date
+     * @param database un obiect de tip Database de la care vom prelua obiectul connection
+     */
     public ArtistController(Database database) {
         this.connection = database.getConnection();
         try {
@@ -22,6 +27,13 @@ public class ArtistController {
         }
     }
 
+    /**
+     * In aceasta metoda am formatat stringul command cu rol de query. In acest query dorim sa inseram in tabela
+     * astists un artist nou. Pentru a executa queryul este necesara metoda executeUpdate deoarece in query
+     * incercam sa facem o inserare.
+     * @param name
+     * @param country
+     */
     public void create(String name, String country) {
         try {
             String command = String.format("insert into artists(name,country) values ('%s','%s')", name, country);
@@ -32,6 +44,15 @@ public class ArtistController {
         }
     }
 
+    /**
+     * In aceasta metoda am formatat stringul command cu rol de query. In acest query dorim sa selectam din tabela
+     * randurile unde numele corespunde cu cel dat ca paramentru.
+     * Pentru a executa queryul este necesara metoda executeQuery deoarece in query incercam sa facem un select.
+     * ExecuteQuery returneaza un obiect de tipul ResultSet pentru care vom apela metoda next().
+     * Metoda next muta cursorul de la pozitia curenta la prima linie, daca metoda returneaza false inseamna ca aceasta este goala
+     * adica prin executia query-ului nu s-a selectat nicio linie deci artistul nu se afla in baza de date.
+     * @param name
+     */
     public void findByName(String name) {
         String command = String.format("select * from artists where name = '%s'", name);
         try {

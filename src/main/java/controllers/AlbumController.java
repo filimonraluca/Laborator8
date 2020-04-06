@@ -11,6 +11,7 @@ public class AlbumController {
     Connection connection;
     Statement statement;
 
+
     public AlbumController(Database database) {
         this.connection = database.getConnection();
         try {
@@ -19,7 +20,14 @@ public class AlbumController {
             e.printStackTrace();
         }
     }
-
+    /**
+     * In aceasta metoda am formatat stringul command cu rol de query. In acest query dorim sa inseram in tabela
+     * astists un artist nou. Pentru a executa queryul este necesara metoda executeUpdate deoarece in query
+     * incercam sa facem o inserare.
+     * @param name
+     * @param artistId
+     * @param releaseYear
+     */
     public void create(String name, int artistId, int releaseYear) {
         try {
             String command = String.format("insert into albums(name,artist_id,release_year) values ('%s','%d',%d)", name, artistId, releaseYear);
@@ -29,6 +37,16 @@ public class AlbumController {
             e.printStackTrace();
         }
     }
+
+    /**
+     * In aceasta metoda am formatat stringul command cu rol de query. In acest query dorim sa selectam din tabela
+     * randurile unde id-ul artistului corespunde cu cel dat ca paramentru.
+     * Pentru a executa queryul este necesara metoda executeQuery deoarece in query incercam sa facem un select.
+     * ExecuteQuery returneaza un obiect de tipul ResultSet pentru care vom apela metoda next().
+     * Metoda next muta cursorul de la pozitia curenta la prima linie, daca metoda returneaza false inseamna ca aceasta este goala
+     * adica prin executia query-ului nu s-a selectat nicio linie deci artistul nu are niciun album in baza de date.
+     * @param artistId
+     */
 
     public void findByArtist(int artistId) {
         String command = String.format("select * from albums where artist_id = '%d'", artistId);
