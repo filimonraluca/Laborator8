@@ -32,6 +32,7 @@ public class Main {
             System.out.printf("----- Chart nr. %d ------\n ", i);
             chart.displayChart();
         }
+        database.closeConnection();
     }
 
 }
