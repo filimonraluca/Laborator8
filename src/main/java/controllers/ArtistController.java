@@ -1,6 +1,7 @@
 package controllers;
 
 import com.sun.scenario.effect.impl.sw.java.JSWBlend_SRC_OUTPeer;
+import dataInOopFormat.Artist;
 import databaseManager.Database;
 import org.w3c.dom.ls.LSOutput;
 
@@ -21,7 +22,7 @@ public class ArtistController {
      */
     public ArtistController(Database database) {
         this.connection = database.getConnection();
-        try {
+            try {
             this.statement = connection.createStatement();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -32,12 +33,11 @@ public class ArtistController {
      * In aceasta metoda am formatat stringul command cu rol de query. Prin acest query dorim sa inseram in tabela
      * astists un artist nou. Pentru a executa queryul este necesara metoda executeUpdate deoarece in query
      * incercam sa realizam o inserare.
-     * @param name
-     * @param country
+     * @param artist
      */
-    public void create(String name, String country) {
+    public void create(Artist artist) {
         try {
-            String command = String.format("insert into artists(name,country) values ('%s','%s')", name, country);
+            String command = String.format("insert into artists(name,country) values ('%s','%s')", artist.getName(), artist.getCountry());
             statement.executeUpdate(command);
 
         } catch (SQLException e) {
@@ -67,4 +67,6 @@ public class ArtistController {
             e.printStackTrace();
         }
     }
+
+
 }

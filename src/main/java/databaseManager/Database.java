@@ -15,7 +15,7 @@ public class Database {
      */
     public Database() {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MusicAlbum", "dba" , "sql");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MusicAlbum?useSSL=false", "dba" , "sql");
             System.out.println("databaseManager.Database connection successful!\n");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -26,5 +26,6 @@ public class Database {
     {
         return connection;
     }
+
 
 }

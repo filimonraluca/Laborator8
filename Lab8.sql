@@ -23,3 +23,19 @@ FOREIGN KEY (artist_id)
         REFERENCES artists (id)
         ON UPDATE RESTRICT ON DELETE CASCADE
 ) engine=InnoDB auto_increment=1 default charset=latin1;
+
+create table if not exists chart(
+	id int not null auto_increment,
+    album_id int not null,
+    primary key (id),
+	FOREIGN KEY (album_id)
+        REFERENCES albums (id)
+        ON UPDATE RESTRICT ON DELETE CASCADE
+)engine=InnoDB auto_increment=1 default charset=latin1;
+
+create table if not exists charts(
+	id int not null auto_increment,
+    chart JSON,
+    primary key (id)
+)engine=InnoDB auto_increment=1 default charset=latin1;
+
